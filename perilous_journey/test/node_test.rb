@@ -17,4 +17,19 @@ class NodeTest < Minitest::Test
     subject = Node.new('Burke')
     assert_nil subject.next_node
   end
+
+  def test_tail_returns_true_if_next_node_is_nil
+    subject = Node.new('Burke')
+    assert_equal subject.tail?, true
+  end
+
+  def test_next_node_can_change_node_state
+    subject = Node.new('Burke')
+    data = 'pants'
+
+    subject.next_node = data
+    result = subject.next_node
+
+    assert_equal data, result
+  end
 end
