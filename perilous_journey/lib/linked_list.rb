@@ -8,11 +8,7 @@ class LinkedList
   end
 
   def append(surname)
-    if empty?
-      set_head(surname)
-    else
-      set_tail(surname)
-    end
+    empty? ? set_head(surname) : set_tail(surname)
   end
 
   def count

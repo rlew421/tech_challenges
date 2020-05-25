@@ -83,4 +83,11 @@ class LinkedListTest < Minitest::Test
     assert_instance_of Node, result
     assert_equal 'Rhodes', result.surname
   end
+
+  def test_append_three_nodes
+    subject = LinkedList.new
+    subject.append('Rhodes')
+    subject.append('Hardy')
+    subject.append('Smith')
+  end
 end
