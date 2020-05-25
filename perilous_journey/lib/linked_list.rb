@@ -11,6 +11,21 @@ class LinkedList
     empty? ? set_head(surname) : set_tail(surname)
   end
 
+  def prepend(surname)
+    node = new_node(surname)
+    node.next_node = head
+    self.head = node
+  end
+
+  def insert(position, surname)
+    node = new_node(surname)
+    prior_node = node_at(head, position - 1)
+    next_node = node_at(head, position)
+    prior_node.next_node = node
+    node.next_node = next_node
+    return node
+  end
+
   def count
     return 0 if empty?
     count_node(head, 1)
@@ -61,5 +76,10 @@ class LinkedList
 
   def sentence_starter
     "The #{head.surname} family"
+  end
+
+  def node_at(node, position, counter = 0)
+    return node if position == counter
+    node_at(node.next_node, position, counter += 1)
   end
 end

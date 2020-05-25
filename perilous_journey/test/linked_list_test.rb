@@ -119,4 +119,29 @@ class LinkedListTest < Minitest::Test
 
     assert_equal expected, result
   end
+
+  def test_prepend_appends_to_head
+    expected = 'The McKinney family, followed by the Brooks family, followed by the Henderson family'
+    subject = LinkedList.new
+    subject.append('Brooks')
+    subject.append('Henderson')
+    subject.prepend('McKinney')
+
+    result = subject.to_string
+
+    assert_equal expected, result
+  end
+
+  def test_insert
+    expected = 'The Brooks family, followed by the Lawson family, followed by the Henderson family, followed by the McKinney family'
+    subject = LinkedList.new
+    subject.append('Brooks')
+    subject.append('Henderson')
+    subject.append('McKinney')
+
+    result = subject.insert(1, 'Lawson')
+
+    assert_instance_of Node, result
+    assert_equal expected, subject.to_string
+  end
 end
