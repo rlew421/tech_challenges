@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/linked_list.rb'
+require 'pry'
 
 class LinkedListTest < Minitest::Test
   def test_new_returns_a_linked_list
@@ -42,5 +43,35 @@ class LinkedListTest < Minitest::Test
     result = subject.to_string
 
     assert_equal 'The West family', result
+  end
+
+  def test_append_two_nodes
+    subject = LinkedList.new
+    subject.append('Rhodes')
+    subject.append('Hardy')
+
+    result = subject.head.next_node.surname
+
+    assert_equal 'Hardy', result
+  end
+
+  def test_last_node_returns_the_tail
+    subject = LinkedList.new
+    subject.append('Rhodes')
+
+    result = subject.last_node(subject.head)
+    assert_equal 'Rhodes', result.surname
+  end
+
+  def test_empty_returns_true_when_head_is_nil
+    subject = LinkedList.new
+    assert_equal true, subject.empty?
+  end
+
+  def test_empty_returns_false_when_head_is_not_nil
+    subject = LinkedList.new
+    subject.append('Rhodes')
+
+    assert_equal false, subject.empty?
   end
 end

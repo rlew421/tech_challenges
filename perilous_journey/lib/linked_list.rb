@@ -8,7 +8,12 @@ class LinkedList
   end
 
   def append(surname)
-    self.head = Node.new(surname)
+    node = Node.new(surname)
+    if empty?
+      self.head = node
+    else
+      last_node(head).next_node = node
+    end
   end
 
   def count
@@ -21,5 +26,14 @@ class LinkedList
 
   def to_string
     "The #{head.surname} family"
+  end
+
+  def last_node(node)
+    return node if node.tail?
+    last_node(node.next_node)
+  end
+
+  def empty?
+    head.nil?
   end
 end
