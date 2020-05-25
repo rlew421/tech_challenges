@@ -29,6 +29,18 @@ class LinkedListTest < Minitest::Test
   end
 
   def test_count_returns_one_for_list_with_one_node
-    
+    subject = LinkedList.new
+    subject.append('West')
+
+    assert_equal 1, subject.count
+  end
+
+  def test_to_string_returns_correct_sentence_when_one_node_present
+    subject = LinkedList.new
+    subject.append('West')
+
+    result = subject.to_string
+
+    assert_equal 'The West family', result
   end
 end

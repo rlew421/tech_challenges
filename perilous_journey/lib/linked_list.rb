@@ -18,4 +18,8 @@ class LinkedList
       1
     end
   end
+
+  def to_string
+    "The #{head.surname} family"
+  end
 end
