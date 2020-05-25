@@ -74,4 +74,13 @@ class LinkedListTest < Minitest::Test
 
     assert_equal false, subject.empty?
   end
+
+  def test_new_node_returns_a_new_node
+    subject = LinkedList.new
+
+    result = subject.new_node('Rhodes')
+
+    assert_instance_of Node, result
+    assert_equal 'Rhodes', result.surname
+  end
 end

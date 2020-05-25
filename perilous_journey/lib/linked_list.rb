@@ -8,11 +8,10 @@ class LinkedList
   end
 
   def append(surname)
-    node = Node.new(surname)
     if empty?
-      self.head = node
+      self.head = new_node(surname)
     else
-      last_node(head).next_node = node
+      last_node(head).next_node = new_node(surname)
     end
   end
 
@@ -35,5 +34,9 @@ class LinkedList
 
   def empty?
     head.nil?
+  end
+
+  def new_node(surname)
+    Node.new(surname)
   end
 end
