@@ -89,5 +89,34 @@ class LinkedListTest < Minitest::Test
     subject.append('Rhodes')
     subject.append('Hardy')
     subject.append('Smith')
+
+    result = subject.head.next_node.next_node.surname
+
+    assert_equal 'Smith', result
+  end
+
+  def test_count_three_nodes
+    subject = LinkedList.new
+    subject.append('Rhodes')
+    subject.append('Hardy')
+    subject.append('Smith')
+
+    result = subject.count
+
+    assert_equal 3, result
+  end
+
+  def test_to_string_works_with_three_nodes
+    subject = LinkedList.new
+
+    subject.append('Rhodes')
+    subject.append('Hardy')
+    subject.append('Smith')
+
+    expected = 'The Rhodes family, followed by the Hardy family, followed by the Smith family'
+
+    result = subject.to_string
+
+    assert_equal expected, result
   end
 end
