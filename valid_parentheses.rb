@@ -47,13 +47,14 @@ def is_valid(s)
 
     # iterate through each character in the string
     s.each_char do |char|
-        # if the character we're iterating over is a key in the bracket pairs hash (is an opening bracket), add it to the stack
+        # if the character we're iterating over is a key in the bracket pairs hash (is an opening bracket), add the mapping of that character to the stack
         if bracket_pairs.key?(char)
             stack << bracket_pairs[char]
         else
         # if the character we're iterating over is not a key in the bracket pairs hash (if it's a closing bracket), pop off the character that's currently at the top of the stack
            top_character = stack.pop
             # if the character we're iterating over doesn't match the top character, return false
+            # if it's valid, this closing bracket should match the top character
             return false unless char == top_character
         end
     end
