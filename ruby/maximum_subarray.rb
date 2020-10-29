@@ -41,11 +41,14 @@
 def max_sub_array(nums)
     # create a variable to keep track of the current array (add/subtract each element as we iterate over it)
     max_current = nums[0]
-    # create another variable to keep track of the max total
+    # create another variable to keep track of the max total. this also starts at num[0]
     max_total = nums[0]
 
-    # iterate through the nums array starting with the element indexed at 1 because we already have variables that start at nums[0]
-    (1..nums[-1]).each do |num|
-
+    # iterate through each number in the nums array
+    nums.each do |num|
+      # if the number we're on is greater than the max_current plus that number, then we set the max_current equal to the number
+      max_current = (num > max_current + num) ? num : max_current + num
+      max_total = max_current if max_current > max_total
     end
+  max_total
 end
