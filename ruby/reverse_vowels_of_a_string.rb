@@ -29,5 +29,53 @@
 # swap the values of pointer_1 and pointer_2
 
 def reverse_vowels(s)
+    string_array = s.split('')
+    pointer_1 = 0
+    pointer_2 = string_array.length - 1
 
+    # while we still have characters left to iterate through
+    while pointer_1 < pointer_2
+        # this while loop is for the left pointer
+        while pointer_1 < pointer_2
+            # if the character that pointer_1 is pointing to is not a vowel, increment pointer_1 by 1 to shift it one place to the right
+            if !is_vowel(string_array[pointer_1])
+                pointer_1 += 1
+            # if the character that pointer_1 is pointing to is a vowel,
+            else
+                break
+            end
+        end
+
+        # this while loop is for the right pointer
+        while pointer_1 < pointer_2
+            # if the character that pointer_2 is pointing to is not a vowel, decrement pointer_2 by 1 to shift it one place to the left
+            if !is_vowel(string_array[pointer_2])
+                pointer_2 -= 1
+            else
+                break
+            end
+        end
+
+        # when both pointers are on vowels, swap them
+        # create a variable called temp to temporarily store the character pointer_1 is pointing to
+        temp = string_array[pointer_1]
+        # replace the character pointer_1 is pointing to with the character pointer_2 is pointing to
+        string_array[pointer_1] = string_array[pointer_2]
+        # replace the character pointer_2 is pointing to with temp (the character pointer_1 was originally pointing to)
+        string_array[pointer_2] = temp
+
+        pointer_1 += 1
+        pointer_2 -= 1
+    end
+
+    # turn the array of characters back into a string
+    string_array.join('')
+end
+
+
+# create a method to check if a character is a vowel
+def is_vowel(char)
+    vowels = 'aeiou'
+
+    return vowels.include?(char)
 end
